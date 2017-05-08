@@ -2,49 +2,44 @@
 
 Polynom::Polynom() :degree(0)
 {
-	coefficient = new double[1];
+	coefficient = new int[1];
 	coefficient[0] = 1;
-	//cerr << "constr" << endl;
 }
 
 Polynom::Polynom(unsigned int exp) :degree(exp)
 {
-	coefficient = new double[exp+1];
+	coefficient = new int[exp+1];
 	for (int i = 0; i < exp; i++)
 	{
 		coefficient[i] = 0;
 	}
 	coefficient[exp] = 1;
-	//cerr << "constr" << endl;
 }
 
-Polynom::Polynom(unsigned int exp,double coef[]) :degree(exp)
+Polynom::Polynom(unsigned int exp,int coef[]) :degree(exp)
 {
-	coefficient = new double[exp + 1];
+	coefficient = new int[exp + 1];
 	for (int i = 0; i <= exp; i++)
 	{
 		coefficient[i] = coef[i];
 	}
-	//cerr << "constr" << endl;
 }
 
 //конструктор копирования
 Polynom::Polynom( const Polynom &p) 
 {
 	degree = p.degree;
-	coefficient = new double[degree + 1];
+	coefficient = new int[degree + 1];
 	for (int i = 0; i <= degree; i++)
 	{
 		coefficient[i] = p.coefficient[i];
 	}
-	//cerr << "constr" << endl;
 }
 
 
 Polynom::~Polynom()
 {
 	delete[] coefficient;
-	//cerr << "destr" << endl;
 }
 
 void Polynom::show() const
@@ -72,7 +67,7 @@ void Polynom::show() const
 	
 }
 
-void Polynom::correctCoefficient(unsigned int deg, double coef)
+void Polynom::correctCoefficient(unsigned int deg, int coef)
 {
 	if (Polynom::degree >= deg) Polynom::coefficient[deg] = coef;
 }
@@ -82,7 +77,7 @@ int Polynom::getDeg() const
 	return Polynom::degree;
 }
 
-double* Polynom::getCoef() const
+int* Polynom::getCoef() const
 {
 	return Polynom::coefficient;
 }
@@ -94,9 +89,9 @@ Polynom Polynom::sum(const Polynom& A)
 	unsigned int min = (degA < degB) ? degA : degB;
 	bool k = (min == degA);
 	unsigned int max = k ? degB : degA;
-	double*tmpCoef = new double[max + 1];
-	double* tmpA = A.getCoef();
-	double* tmpB = this->getCoef();
+	int*tmpCoef = new int[max + 1];
+	int* tmpA = A.getCoef();
+	int* tmpB = this->getCoef();
 	for (int i = 0; i <= min; i++)
 	{
 		tmpCoef[i] = tmpA[i] + tmpB[i];
@@ -118,9 +113,9 @@ Polynom Polynom::unsum(const Polynom& A)
 	unsigned int min = (degA < degB) ? degA : degB;
 	bool k = (min == degA);
 	unsigned int max = k ? degB : degA;
-	double*tmpCoef = new double[max+1];
-	double* tmpA = A.getCoef();
-	double* tmpB = this->getCoef();
+	int*tmpCoef = new int[max+1];
+	int* tmpA = A.getCoef();
+	int* tmpB = this->getCoef();
 	for (int i = 0; i <= min; i++)
 		tmpCoef[i] = tmpB[i] - tmpA[i];
 	for (int i = min + 1; i <= max; i++)
@@ -136,9 +131,9 @@ Polynom Polynom::product(const Polynom& B)
 	unsigned int degB = B.getDeg();
 	unsigned int degTemp = degA + degB;
 
-	double*tmpCoef = new double[degTemp+1];
-	double* tmpA = this->getCoef();
-	double* tmpB = B.getCoef();
+	int*tmpCoef = new int[degTemp+1];
+	int* tmpA = this->getCoef();
+	int* tmpB = B.getCoef();
 
 	for (int i = 0; i <= degTemp; i++)
 		tmpCoef[i] = 0;

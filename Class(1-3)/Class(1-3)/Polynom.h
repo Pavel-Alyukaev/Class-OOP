@@ -11,13 +11,13 @@ class Polynom
 public:
 	Polynom();
 	Polynom(unsigned int deg);
-	Polynom(unsigned int deg, double coef[]);
+	Polynom(unsigned int deg, int coef[]);
 	Polynom(const Polynom &p);
 	~Polynom();
 	void show() const;
-	void correctCoefficient(unsigned int deg,double coef);
+	void correctCoefficient(unsigned int deg,int coef);
 	int getDeg() const;
-	double *getCoef() const;
+	int *getCoef() const;
 	Polynom sum(const Polynom& A);
 	Polynom unsum(const Polynom& A);
 	Polynom product(const Polynom& A);
@@ -25,7 +25,7 @@ public:
 private:
 
 	unsigned int degree;
-	double *coefficient;
+	int *coefficient;
 
 };
 
