@@ -16,6 +16,9 @@ void main()
 	A.show();
 	cout << "B=";
 	B.show();
+	cout << "Correct B=";
+	B.correctCoefficient(2, 0);
+	B.show();
 	cout << "Sum ";
 	Polynom C=A.sum(B); 
 	C.show();
@@ -29,6 +32,8 @@ void main()
 	A.show();
 	cout << "B=";
 	B.show();
+	cout << "B(1)=";
+	cout << B.value(1) << endl;
 	 
 	system("pause");
 

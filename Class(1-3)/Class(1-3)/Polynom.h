@@ -2,6 +2,7 @@
 
 
 #include <iostream>
+#include<math.h>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ public:
 	Polynom sum(const Polynom& A);
 	Polynom unsum(const Polynom& A);
 	Polynom product(const Polynom& A);
+	double value(double x);
 
 private:
 

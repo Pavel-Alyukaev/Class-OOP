@@ -47,14 +47,14 @@ void Polynom::show() const
 	bool k=false;
 	for (int i = 0; i <= Polynom::degree; i++)
 	{
-		if (Polynom::coefficient[i] == 0) continue;
-		if (Polynom::coefficient[i] > 0)
+		if (this->coefficient[i] == 0) continue;
+		if (this->coefficient[i] > 0)
 			cout << (k ? "+" : "");
-		if (Polynom::coefficient[i] != 1 && Polynom::coefficient[i] != -1 || i == 0)
-			cout << Polynom::coefficient[i];
-		if (Polynom::coefficient[i] != 1 && Polynom::coefficient[i] != -1 && i != 0)
+		if (this->coefficient[i] != 1 && this->coefficient[i] != -1 || i == 0)
+			cout << this->coefficient[i];
+		if (this->coefficient[i] != 1 && this->coefficient[i] != -1 && i != 0)
 			cout << "*";
-		if (Polynom::coefficient[i] == -1)
+		if (this->coefficient[i] == -1)
 			cout << "-";
 		k=true;
 		if (i > 0)
@@ -69,17 +69,17 @@ void Polynom::show() const
 
 void Polynom::correctCoefficient(unsigned int deg, int coef)
 {
-	if (Polynom::degree >= deg) Polynom::coefficient[deg] = coef;
+	if (this->degree >= deg) this->coefficient[deg] = coef;
 }
 
 int Polynom::getDeg() const
 {
-	return Polynom::degree;
+	return this->degree;
 }
 
 int* Polynom::getCoef() const
 {
-	return Polynom::coefficient;
+	return this->coefficient;
 }
 
 Polynom Polynom::sum(const Polynom& A)
@@ -143,4 +143,14 @@ Polynom Polynom::product(const Polynom& B)
 	
 	Polynom tmp (degTemp, tmpCoef);
 	return tmp;
+}
+
+double Polynom::value(double x)
+{
+	double result=0;
+	for (int i = 0; i <= this->degree; i++)
+	{
+		result += this->coefficient[i] * pow(x, i);
+	}
+	return result;
 }

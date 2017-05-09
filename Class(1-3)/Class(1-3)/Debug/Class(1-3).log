@@ -1,4 +1,6 @@
-﻿  Polynom-methods.cpp
+﻿  Source.cpp
+d:\github\class-oop\class(1-3)\class(1-3)\source.cpp(11): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Polynom-methods.cpp
 d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(12): warning C4018: <: несоответствие типов со знаком и без знака
 d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(22): warning C4018: <=: несоответствие типов со знаком и без знака
 d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(33): warning C4018: <=: несоответствие типов со знаком и без знака
@@ -10,5 +12,7 @@ d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(121): warning C401
 d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(138): warning C4018: <=: несоответствие типов со знаком и без знака
 d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(140): warning C4018: <=: несоответствие типов со знаком и без знака
 d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(141): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\github\class-oop\class(1-3)\class(1-3)\polynom-methods.cpp(151): warning C4018: <=: несоответствие типов со знаком и без знака
+  Создание кода...
   Class(1-3).vcxproj -> D:\GitHub\Class-OOP\Class(1-3)\Debug\Class(1-3).exe
   Class(1-3).vcxproj -> D:\GitHub\Class-OOP\Class(1-3)\Debug\Class(1-3).pdb (Partial PDB)
