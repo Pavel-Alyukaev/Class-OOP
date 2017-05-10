@@ -69,7 +69,8 @@ void Polynom::show() const
 
 void Polynom::correctCoefficient(unsigned int deg, int coef)
 {
-	if (this->degree >= deg) this->coefficient[deg] = coef;
+	if (this->degree == deg&& coef == 0) this->degree -= 1;
+	else if (this->degree > deg) this->coefficient[deg] = coef;
 }
 
 int Polynom::getDeg() const
