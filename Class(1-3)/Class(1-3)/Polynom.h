@@ -1,12 +1,9 @@
 #pragma once
 
-
 #include <iostream>
 #include<math.h>
 
 using namespace std;
-
-
 class Polynom
 {
 public:
@@ -17,17 +14,15 @@ public:
 	~Polynom();
 	void show() const;
 	void correctCoefficient(unsigned int deg,int coef);
-	int getDeg() const;
-	int *getCoef() const;
 	Polynom sum(const Polynom& A);
 	Polynom unsum(const Polynom& A);
 	Polynom product(const Polynom& A);
 	double value(double x);
-
+	int getDeg() const;
+	int getCoef(unsigned int n) const;
 private:
 
 	unsigned int degree;
 	int *coefficient;
-
 };
 
