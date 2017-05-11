@@ -86,7 +86,7 @@ void Polynom::correctCoefficient(unsigned int deg, int coef)
 		delete coefficient;
 		coefficient = coeff;
 	}
-	else if (degree == deg&& coef == 0)
+	else if (degree == deg && coef == 0)
 	{
 		degree -= 1;
 		for (int i = degree; i>=0 && coefficient[i]==0; i--)
@@ -94,13 +94,11 @@ void Polynom::correctCoefficient(unsigned int deg, int coef)
 			degree -= 1;
 		}
 	}
-		
 	else if (degree > deg) coefficient[deg] = coef;
 }
 
 Polynom Polynom::sum(const Polynom& A)
 {
-
 	unsigned int min = (A.degree < degree) ? A.degree : degree;
 	bool k = (min == A.degree);
 	unsigned int max = A.degree + degree-min;
@@ -115,14 +113,12 @@ Polynom Polynom::sum(const Polynom& A)
 	}
 	Polynom tmp(max, tmpCoef) ;
 	return tmp;
-
 }
 
 
 Polynom Polynom::unsum(const Polynom& A)
 {
 	unsigned int min = (A.degree < degree) ? A.degree : degree;
-	bool k = (min == A.degree);
 	unsigned int max = A.degree + degree - min;
 	int*tmpCoef = new int[max+1];
 	for (int i = 0; i <= min; i++)
