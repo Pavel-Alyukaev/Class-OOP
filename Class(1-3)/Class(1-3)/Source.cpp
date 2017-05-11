@@ -30,18 +30,36 @@ void main()
 	cout << "Sum ";
 	Polynom C=A.sum(B); 
 	C.show();
+	Polynom CC = A + B;
+	cout << "'+'= ";
+	CC.show();
 	Polynom D = A.unsum(B);
 	cout << "Unsum ";
 	D.show();
+	Polynom DD = A - B;
+	cout << "'-'= ";
+	DD.show();
 	Polynom E = A.product(B);
 	cout << "Product ";
 	E.show();
+	Polynom EE = A * B;
+	cout << "'*'= ";
+	EE.show();
 	cout << "A=";
 	A.show();
 	cout << "B=";
 	B.show();
+	cout << "B=" << B << endl;
 	cout << "B(1)=";
 	cout << B.value(1) << endl;
+	cout << "(1)=";
+	cout << B(1) << endl;
+	Polynom QQ;
+	//QQ.correctCoefficient(7, 1);
+	cin >> QQ;
+	cout << "QQ=" << QQ << endl;
+	QQ.~Polynom();
+	
 	system("pause");
 
 }
@@ -52,7 +70,7 @@ int* randCoef(int n)
 	int* b = new int[n+1];
 	for (int i = 0; i < n+1; i++)
 	{
-		b[i] = rand() % 10;
+		b[i] = rand() % 21-10;
 	}
 	return b;
 }

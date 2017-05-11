@@ -20,6 +20,15 @@ public:
 	double value(double x);
 	int getDeg() const;
 	int getCoef(unsigned int n) const;
+
+	friend Polynom operator+(Polynom A, Polynom B);
+	friend Polynom operator-(Polynom A, Polynom B);
+	friend Polynom operator*(Polynom A, Polynom B);
+	friend ostream& operator<<(ostream& os, const Polynom &A);
+	friend istream& operator>>(istream& is, Polynom &A);
+	double operator()(double x);
+	
+
 private:
 
 	unsigned int degree;

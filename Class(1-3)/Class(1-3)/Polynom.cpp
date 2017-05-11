@@ -2,7 +2,7 @@
 
 Polynom::Polynom() :degree(0)
 {
-	coefficient = new int[1];
+	coefficient = new int[2];
 	coefficient[0] = 1;
 }
 
@@ -29,8 +29,8 @@ Polynom::Polynom(unsigned int exp,int coef[]) :degree(exp)
 Polynom::Polynom( const Polynom &p) 
 {
 	degree = p.degree;
-	coefficient = new int[degree + 1];
-	for (int i = 0; i <= degree; i++)
+	coefficient = new int[p.degree + 1];
+	for (int i = 0; i <= p.degree; i++)
 	{
 		coefficient[i] = p.coefficient[i];
 	}
@@ -47,14 +47,14 @@ void Polynom::show() const
 	bool k=false;
 	for (int i = 0; i <= Polynom::degree; i++)
 	{
-		if (this->coefficient[i] == 0) continue;
-		if (this->coefficient[i] > 0)
+		if (coefficient[i] == 0) continue;
+		if (coefficient[i] > 0)
 			cout << (k ? "+" : "");
-		if (this->coefficient[i] != 1 && this->coefficient[i] != -1 || i == 0)
-			cout << this->coefficient[i];
-		if (this->coefficient[i] != 1 && this->coefficient[i] != -1 && i != 0)
+		if (coefficient[i] != 1 && coefficient[i] != -1 || i == 0)
+			cout << coefficient[i];
+		if (coefficient[i] != 1 && coefficient[i] != -1 && i != 0)
 			cout << "*";
-		if (this->coefficient[i] == -1)
+		if (coefficient[i] == -1)
 			cout << "-";
 		k=true;
 		if (i > 0)
@@ -163,3 +163,55 @@ int Polynom::getCoef(unsigned int n) const
 	if (n <= degree) return coefficient[n];
 }
 
+Polynom operator+(Polynom A, Polynom B)
+{
+	return A.sum(B);
+}
+Polynom operator-(Polynom A, Polynom B)
+{
+	return A.unsum(B);
+}
+Polynom operator*(Polynom A, Polynom B)
+{
+	return A.product(B);
+}
+
+double Polynom::operator()(double x)
+{
+	return this->value(x);
+}
+ostream& operator<<(ostream& os, const Polynom &A)
+{
+	bool k = false;
+	for (int i = 0; i <= A.degree; i++)
+	{
+		if (A.coefficient[i] == 0) continue;
+		if (A.coefficient[i] > 0)
+			os << (k ? "+" : "");
+		if (A.coefficient[i] != 1 && A.coefficient[i] != -1 || i == 0)
+			os << A.coefficient[i];
+		if (A.coefficient[i] != 1 && A.coefficient[i] != -1 && i != 0)
+			os << "*";
+		if (A.coefficient[i] == -1)
+			os << "-";
+		k = true;
+		if (i > 0)
+		{
+			if (i == 1) os << "x";
+			else os << "x^" << i;
+		}
+	}
+	return os;
+}
+
+istream& operator >> (istream& is, Polynom &A)
+{
+	is >> A.degree;
+	delete A.coefficient;
+	A.coefficient = new int[A.degree + 1];
+	for (int i = 0; i <= A.degree ; i++)
+	{
+		is >> A.coefficient[i];
+	}
+	return is;
+}
