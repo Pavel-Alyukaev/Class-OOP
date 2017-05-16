@@ -1,4 +1,5 @@
 #include"Polynom.h"
+#include<typeinfo.h>
 
 Polynom::Polynom() :degree(0)
 {
@@ -35,7 +36,6 @@ Polynom::Polynom( const Polynom &p)
 		coefficient[i] = p.coefficient[i];
 	}
 }
-
 
 Polynom::~Polynom()
 {
@@ -215,3 +215,92 @@ istream& operator >> (istream& is, Polynom &A)
 	}
 	return is;
 }
+
+void Polynom::operator=(const Polynom& A)
+{
+	degree = A.degree;
+	delete[] coefficient;
+	coefficient = new int[degree + 1];
+	for (int i = 0; i <= degree; i++)
+	{
+		coefficient[i] = A.coefficient[i];
+	}
+}
+
+bool Polynom::operator>=(const Polynom& A)
+{
+	bool result = true;
+	if (degree == A.degree)
+	{
+		for (int i = degree; i >=0; i--)
+		{
+			if (coefficient[i] < A.coefficient[i])
+			{
+				result = false;
+				break;
+			}
+			else if (coefficient[i] > A.coefficient[i])
+				break;
+		}
+	}
+	else if (degree < A.degree)result = false;
+	return result;
+}
+
+bool Polynom::operator>(const Polynom& A)
+{
+	bool result = true;
+	if (degree == A.degree)
+	{
+		for (int i = degree; i >= 0; i--)
+		{
+			if (coefficient[i] < A.coefficient[i])
+			{
+				result = false;
+				break;
+			}
+			else if (coefficient[i] > A.coefficient[i])
+				break;
+			if (i == 0) result = false;
+
+		}
+	}
+	else if (degree < A.degree)result = false;
+	return result;
+}
+
+
+bool Polynom::operator<=(const Polynom& A)
+{
+	return !(*this > A);
+}
+
+
+bool Polynom::operator<(const Polynom& A)
+{
+	return !(*this >= A);
+}
+
+bool Polynom::operator==(const Polynom& A)
+{
+	bool result=true;
+	if (degree == A.degree)
+	{
+		for (int i = degree; i >= 0; i--)
+		{
+			if (coefficient[i] != A.coefficient[i])
+			{
+				result = false;
+				break;
+			}
+		}
+	}
+	else result = false;
+	return result;
+}
+
+bool Polynom::operator!=(const Polynom& A)
+{
+	return !(*this == A);
+}
+

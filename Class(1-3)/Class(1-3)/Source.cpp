@@ -1,65 +1,85 @@
 #include"Polynom.h"
 #include<Windows.h>
+#include<locale.h>
 #include<ctime>
 
 int* randCoef(int n);
 
 void main()
 {
+	setlocale(LC_ALL, "rus");
 	srand(time(0));
+	Polynom *P = new Polynom[9];
 	Polynom A(3, randCoef(3));
 	Polynom B(4, randCoef(4));
-	cout << "A=";
-	A.show();
-	cout << "B=";
-	B.show();
-	cout << "Correct B=";
-	B.correctCoefficient(7, 1);
-	B.show();
-	cout << "B degree = " << B.getDeg() << endl;
-	cout << "B coefficient = ";
-	for (int i = 0; i <= B.getDeg(); i++)
+	cout << "******исходные полиномы*****" << endl;
+	P[0] = A;
+	P[1] = B;
+	cout << "P[0]=";
+	P[0].show();
+	cout << "P[1]=";
+	P[1].show();
+	cout << "******корректировка коэффициентов*****" << endl;
+	cout << "Correct P[1]=";
+	P[1].correctCoefficient(7, 1);
+	P[1].show();
+	cout << "P[1] degree = " << P[1].getDeg() << endl;
+	cout << "P[1] coefficient = ";
+	for (int i = 0; i <= P[1].getDeg(); i++)
 	{
-		cout << B.getCoef(i)<<" ";
+		cout << P[1].getCoef(i)<<" ";
 	}
 	cout << endl;
-	cout << "Correct B=";
-	B.correctCoefficient(7, 0);
-	B.show();
-	cout << "B degree = " << B.getDeg() << endl;
+	cout << "Correct P[1]=";
+	P[1].correctCoefficient(7, 0);
+	P[1].show();
+	cout << "P[1] degree = " << P[1].getDeg() << endl;
+	cout << "******матиматические методы*****" << endl;
 	cout << "Sum ";
-	Polynom C=A.sum(B); 
-	C.show();
-	Polynom CC = A + B;
-	cout << "'+'= ";
-	CC.show();
-	Polynom D = A.unsum(B);
+	P[2]= P[0].sum(P[1]);
+	P[2].show();
+	P[3] = P[0].unsum(P[1]);
 	cout << "Unsum ";
-	D.show();
-	Polynom DD = A - B;
-	cout << "'-'= ";
-	DD.show();
-	Polynom E = A.product(B);
+	P[3].show();
+	P[4] = P[0].product(P[1]);
 	cout << "Product ";
-	E.show();
-	Polynom EE = A * B;
-	cout << "'*'= ";
-	EE.show();
-	cout << "A=";
-	A.show();
-	cout << "B=";
-	B.show();
-	cout << "B=" << B << endl;
-	cout << "B(1)=";
-	cout << B.value(1) << endl;
-	cout << "(1)=";
-	cout << B(1) << endl;
-	Polynom QQ;
-	//QQ.correctCoefficient(7, 1);
-	cin >> QQ;
-	cout << "QQ=" << QQ << endl;
-	QQ.~Polynom();
+	P[4].show();
+	P[0].show();
+	cout << "P[1]=";
+	P[1].show();
+	cout << "P[1]=" << B << endl;
+	cout << "P[1](1)=" << P[1].value(1) << endl;
+	cout << "******перегрузка операторов*****" << endl;
+	P[5] = P[0] + P[1];
+	cout << "'+'= " << P[5] << endl;
+	P[6] = P[0] - P[1];
+	cout << "'-'= " << P[6] << endl;
+	P[7] = P[0] * P[1];
+	cout << "'*'= " << P[7] << endl;
+	cout << "(1)=" << P[1](1) << endl;
+	cout << "******Булевы операции*****" << endl;
 	
+	cout << "P[0] > P[1] = " << (P[0] > P[1]) << endl;
+	cout << "P[0] < P[1] = " << (P[0] < P[1]) << endl;
+	cout << "P[1] < P[1] = " << (P[1] < P[1]) << endl;
+	cout << "P[1] <= P[1] = " << (P[1] <= P[1]) << endl;
+	cout << "P[0] == P[1] = " << (P[0] == P[1]) << endl;
+	cout << "P[1] == P[1] = " << (P[1] == P[1]) << endl;
+	cout << "P[0] != P[1] = " << (P[0] != P[1]) << endl;
+	cout << "P[0] != P[0] = " << (P[0] != P[0]) << endl;
+
+
+	cout << "******ввод с клавиатуры*****" << endl;
+	cin >> P[8];
+	cout << "QQ=" << P[8] << endl;
+
+	
+
+
+
+
+
+
 	system("pause");
 
 }

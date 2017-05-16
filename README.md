@@ -1,2 +1,0 @@
-# Class-OOP
-#lab1

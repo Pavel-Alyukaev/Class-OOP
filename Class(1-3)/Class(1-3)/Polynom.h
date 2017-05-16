@@ -27,6 +27,13 @@ public:
 	friend ostream& operator<<(ostream& os, const Polynom &A);
 	friend istream& operator>>(istream& is, Polynom &A);
 	double operator()(double x);
+	void operator=(const Polynom& A);
+	bool operator>=(const Polynom& A);
+	bool operator<=(const Polynom& A);
+	bool operator>(const Polynom& A);
+	bool operator<(const Polynom& A);
+	bool operator==(const Polynom& A);
+	bool operator!=(const Polynom& A);
 	
 
 private:

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8D9452E7-B6A7-4FCD-A765-5E531534D0BF}</ProjectGuid>
+    <ProjectGuid>{174253C5-D77B-4DF6-A18A-1A3F275AAFEA}</ProjectGuid>
     <RootNamespace>Class13</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -110,11 +110,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Polynom.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClInclude Include="Polynom.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Polynom.h" />
+    <ClCompile Include="Polynom.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
