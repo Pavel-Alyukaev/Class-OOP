@@ -47,6 +47,11 @@ void Polynom::show() const
 	bool k=false;
 	for (int i = 0; i <= Polynom::degree; i++)
 	{
+		if (degree == 0)
+		{
+			cout << coefficient[i];
+			break;
+		}
 		if (coefficient[i] == 0) continue;
 		if (coefficient[i] > 0)
 			cout << (k ? "+" : "");
@@ -54,7 +59,7 @@ void Polynom::show() const
 			cout << coefficient[i];
 		if (coefficient[i] != 1 && coefficient[i] != -1 && i != 0)
 			cout << "*";
-		if (coefficient[i] == -1)
+		if (coefficient[i] == -1 && i != 0)
 			cout << "-";
 		k=true;
 		if (i > 0)
@@ -180,27 +185,47 @@ double Polynom::operator()(double x)
 {
 	return this->value(x);
 }
+
 ostream& operator<<(ostream& os, const Polynom &A)
 {
-	bool k = false;
-	for (int i = 0; i <= A.degree; i++)
+	if (typeid(os).name()==typeid(ofstream).name())
 	{
-		if (A.coefficient[i] == 0) continue;
-		if (A.coefficient[i] > 0)
-			os << (k ? "+" : "");
-		if (A.coefficient[i] != 1 && A.coefficient[i] != -1 || i == 0)
-			os << A.coefficient[i];
-		if (A.coefficient[i] != 1 && A.coefficient[i] != -1 && i != 0)
-			os << "*";
-		if (A.coefficient[i] == -1)
-			os << "-";
-		k = true;
-		if (i > 0)
+		os << A.degree << " ";
+		for (int i = 0; i <= A.degree; i++)
 		{
-			if (i == 1) os << "x";
-			else os << "x^" << i;
+			os << A.coefficient[i] << " ";
+		}
+		os << endl;
+	}
+	else
+	{
+		bool k = false;
+		for (int i = 0; i <= A.degree; i++)
+		{
+			if(A.degree==0)
+			{
+				os << A.coefficient[i];
+				break;
+			}
+			if (A.coefficient[i] == 0) continue;
+			if (A.coefficient[i] > 0)
+				os << (k ? "+" : "");
+			if (A.coefficient[i] != 1 && A.coefficient[i] != -1 || i == 0)
+				os << A.coefficient[i];
+			if (A.coefficient[i] != 1 && A.coefficient[i] != -1 && i != 0)
+				os << "*";
+			if (A.coefficient[i] == -1 && i != 0)
+				os << "-";
+			k = true;
+			if (i > 0)
+			{
+				if (i == 1) os << "x";
+				else os << "x^" << i;
+			}
 		}
 	}
+	
+	
 	return os;
 }
 
@@ -304,3 +329,52 @@ bool Polynom::operator!=(const Polynom& A)
 	return !(*this == A);
 }
 
+Polynom& Polynom::operator++()
+{
+	degree++;
+	int* tmpC = new int[degree+1];
+	tmpC[0] = 0;
+	for (int i = 1; i <= degree; i++)
+	{
+		tmpC[i] = coefficient[i - 1];
+	}
+	delete[] coefficient;
+	coefficient = tmpC;
+	return *this;
+}
+
+Polynom Polynom::operator++(int)
+{
+	Polynom tmp(degree,coefficient);
+	++(*this);
+	return tmp;
+}
+
+Polynom& Polynom::operator--()
+{
+
+	if (degree >0)
+	{
+		degree--;
+		int* tmpC = new int[degree + 1];
+		for (int i = degree; i >=0; i--)
+		{
+			tmpC[i] = coefficient[i + 1];
+		}
+		delete[] coefficient;
+		coefficient = tmpC;
+	}
+	else if (degree == 0)
+	{
+		coefficient[0] = 0;
+	}
+	return *this;
+}
+
+Polynom Polynom::operator--(int)
+{
+	Polynom tmp(degree, coefficient);
+	--(*this);
+	return tmp;
+
+}

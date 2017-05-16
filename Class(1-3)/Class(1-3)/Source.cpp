@@ -2,6 +2,7 @@
 #include<Windows.h>
 #include<locale.h>
 #include<ctime>
+#include<fstream>
 
 int* randCoef(int n);
 
@@ -67,18 +68,43 @@ void main()
 	cout << "P[1] == P[1] = " << (P[1] == P[1]) << endl;
 	cout << "P[0] != P[1] = " << (P[0] != P[1]) << endl;
 	cout << "P[0] != P[0] = " << (P[0] != P[0]) << endl;
-
+	
+	cout << "******инкрименты*****" << endl;
+	cout << "P[0]++ = " << P[0]++ << endl;
+	cout << "P[0] = " << P[0] << endl;
+	cout << "++P[0] = " << ++P[0] << endl;
+	cout << "--P[0] = " << --P[0] << endl;
+	cout << "P[0]-- = " << P[0]-- << endl;
+	cout << "P[0] = " << P[0] << endl;
 
 	cout << "******ввод с клавиатуры*****" << endl;
 	cin >> P[8];
-	cout << "QQ=" << P[8] << endl;
+	cout << " P[8]=" << P[8] << endl;
 
+	cout << "(--(--P[8])) = " << (--(--P[8])) << endl;
 	
+	ofstream fout("cppstudio.txt");
+	for (int i = 0; i < 9; i++)
+	{
+		fout << P[i];
+	}
+	fout.close();
 
+	delete[] P;
 
+	Polynom *P_read = new Polynom[9];
+	ifstream fin("cppstudio.txt");
+	for (int i = 0; i < 9; i++)
+	{
+		fin >> P_read[i];
+	}
+	fin.close();
 
-
-
+	cout << "******вывод из файла*****" << endl;
+	for (int i = 0; i < 9; i++)
+	{
+		cout << "P_read[" << i << "]=" << P_read[i] << endl;
+	}
 
 	system("pause");
 

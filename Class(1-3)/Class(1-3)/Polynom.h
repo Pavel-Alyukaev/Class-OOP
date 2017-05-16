@@ -34,7 +34,11 @@ public:
 	bool operator<(const Polynom& A);
 	bool operator==(const Polynom& A);
 	bool operator!=(const Polynom& A);
-	
+	Polynom& operator++();
+	Polynom operator++(int);
+	Polynom& operator--();
+	Polynom operator--(int);
+
 
 private:
 
