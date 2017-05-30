@@ -110,11 +110,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DegreePolynom.h" />
     <ClInclude Include="Polynom.h" />
+    <ClInclude Include="TextPolynom.h" />
+    <ClInclude Include="Pattern.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DegreePolynom.cpp" />
     <ClCompile Include="Polynom.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TextPolynom.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

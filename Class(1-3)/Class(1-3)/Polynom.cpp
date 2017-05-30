@@ -189,11 +189,11 @@ double Polynom::operator()(double x)
 ostream& operator<<(ostream& os, const Polynom &A)
 {
 	if (typeid(os).name()==typeid(ofstream).name())
-	{
-		os << A.degree << " ";
+	{	
+		os << A.degree ;
 		for (int i = 0; i <= A.degree; i++)
 		{
-			os << A.coefficient[i] << " ";
+			os <<" "<< A.coefficient[i] ;
 		}
 		os << endl;
 	}

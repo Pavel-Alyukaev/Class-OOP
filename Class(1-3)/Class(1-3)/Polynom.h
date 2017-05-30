@@ -6,6 +6,9 @@
 using namespace std;
 class Polynom
 {
+protected:
+	unsigned int degree;
+	int *coefficient;
 public:
 	Polynom();
 	Polynom(unsigned int deg);
@@ -39,10 +42,5 @@ public:
 	Polynom& operator--();
 	Polynom operator--(int);
 
-
-private:
-
-	unsigned int degree;
-	int *coefficient;
 };
 
