@@ -36,7 +36,7 @@ DegreePolynom::DegreePolynom(unsigned int deg, int coef[])
 	Polynom A(deg, coef);
 	*this = A;
 	degreeCoef = new int[degree + 1];
-	int k = 0;
+	int k = 1;
 	for (int i = 0; i <= degree; i++)
 	{
 		degreeCoef[i] = 0;
@@ -114,18 +114,19 @@ void DegreePolynom::operator=(const Polynom& A)
 		degreeCoef[i] = 0;
 		if (coefficient[i] != 0)
 			degreeCoef[k++] = i;
-		cerr <<" k= "<< k << " ";
 	}
 }
 
 int DegreePolynom::maxDegCoef()
 {
-	int max;
-	int i = 0;
-	while (degreeCoef[i]!=0)
+	int max = degreeCoef[0];
+	for (int i = 1; i <= degree; i++)
 	{
-		max = degreeCoef[i++];
+		if (degreeCoef[i] == 0) break;
+		max = degreeCoef[i];
+		
 	}
+
 	return max;
 }
 

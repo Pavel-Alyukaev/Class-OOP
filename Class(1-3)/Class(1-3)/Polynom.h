@@ -7,22 +7,22 @@ using namespace std;
 class Polynom
 {
 protected:
-	unsigned int degree;
+	 int degree;
 	int *coefficient;
 public:
 	Polynom();
-	Polynom(unsigned int deg);
-	Polynom(unsigned int deg, int coef[]);
+	Polynom( int deg);
+	Polynom( int deg, int coef[]);
 	Polynom(const Polynom &p);
 	~Polynom();
 	void show() const;
-	void correctCoefficient(unsigned int deg,int coef);
+	void correctCoefficient( int deg,int coef);
 	Polynom sum(const Polynom& A);
 	Polynom unsum(const Polynom& A);
 	Polynom product(const Polynom& A);
 	double value(double x);
 	int getDeg() const;
-	int getCoef(unsigned int n) const;
+	int getCoef( int n) const;
 
 	friend Polynom operator+(Polynom A, Polynom B);
 	friend Polynom operator-(Polynom A, Polynom B);

@@ -3,11 +3,11 @@
 
 Polynom::Polynom() :degree(0)
 {
-	coefficient = new int[2];
+	coefficient = new int[1];
 	coefficient[0] = 1;
 }
 
-Polynom::Polynom(unsigned int exp) :degree(exp)
+Polynom::Polynom( int exp) :degree(exp)
 {
 	coefficient = new int[exp+1];
 	for (int i = 0; i < exp; i++)
@@ -17,8 +17,9 @@ Polynom::Polynom(unsigned int exp) :degree(exp)
 	coefficient[exp] = 1;
 }
 
-Polynom::Polynom(unsigned int exp,int coef[]) :degree(exp)
+Polynom::Polynom( int exp,int coef[]) :degree(exp)
 {
+	if (exp < 0) throw exception("степень полинома меньше нуля!");
 	coefficient = new int[exp + 1];
 	for (int i = 0; i <= exp; i++)
 	{
@@ -72,7 +73,7 @@ void Polynom::show() const
 	
 }
 
-void Polynom::correctCoefficient(unsigned int deg, int coef)
+void Polynom::correctCoefficient( int deg, int coef)
 {
 	if (deg > degree&&coef != 0)
 	{
@@ -104,9 +105,9 @@ void Polynom::correctCoefficient(unsigned int deg, int coef)
 
 Polynom Polynom::sum(const Polynom& A)
 {
-	unsigned int min = (A.degree < degree) ? A.degree : degree;
+	 int min = (A.degree < degree) ? A.degree : degree;
 	bool k = (min == A.degree);
-	unsigned int max = A.degree + degree-min;
+	 int max = A.degree + degree-min;
 	int*tmpCoef = new int[max + 1];
 	for (int i = 0; i <= min; i++)
 	{
@@ -123,8 +124,8 @@ Polynom Polynom::sum(const Polynom& A)
 
 Polynom Polynom::unsum(const Polynom& A)
 {
-	unsigned int min = (A.degree < degree) ? A.degree : degree;
-	unsigned int max = A.degree + degree - min;
+	 int min = (A.degree < degree) ? A.degree : degree;
+	 int max = A.degree + degree - min;
 	int*tmpCoef = new int[max+1];
 	for (int i = 0; i <= min; i++)
 		tmpCoef[i] = coefficient[i] - A.coefficient[i];
@@ -137,7 +138,7 @@ Polynom Polynom::unsum(const Polynom& A)
 
 Polynom Polynom::product(const Polynom& B)
 {
-	unsigned int degTemp = B.degree + degree;
+	 int degTemp = B.degree + degree;
 	int*tmpCoef = new int[degTemp+1];
 	for (int i = 0; i <= degTemp; i++)
 		tmpCoef[i] = 0;
@@ -163,7 +164,7 @@ int Polynom::getDeg() const
 	return degree;
 }
 
-int Polynom::getCoef(unsigned int n) const
+int Polynom::getCoef( int n) const
 {
 	if (n <= degree) return coefficient[n];
 }

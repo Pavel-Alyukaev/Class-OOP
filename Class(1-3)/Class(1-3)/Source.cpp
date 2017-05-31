@@ -37,10 +37,24 @@ void main()
 	input(P,8);
 	outputF(P,9);
 	delete[] P;
-	Polynom *P_read = new Polynom[9];
-	inputF(P_read, 9);
+	Polynom *P_read = new Polynom[20];
+	inputF(P_read, 20);
 	WorkingWithTextPolynom();
 	WorkingWithDegreePolynom();
+	try
+	{
+		Polynom BB(-1, randCoef(3));
+		cout << "BB= " << BB << endl;
+	}
+	catch (const std::exception&ex)
+	{
+		Polynom BB;
+		cerr << ex.what() << endl;
+	}
+
+	
+
+
 	system("pause");
 }
 
