@@ -1,6 +1,7 @@
 #include"Polynom.h"
 #include"TextPolynom.h"
 #include"DegreePolynom.h"
+#include"MyList.h"
 #include<Windows.h>
 #include<locale.h>
 #include<ctime>
@@ -16,8 +17,11 @@ void inputF(Polynom P[], int n);
 void input(Polynom P[], int n);
 void correct(Polynom &P, int n, int NewCoef);
 void firstDate(Polynom P[]);
-void WorkingWithTextPolynom();//********
-void WorkingWithDegreePolynom();//**********
+void WorkingWithTextPolynom();
+void WorkingWithDegreePolynom();
+void WorkingWithException();
+void WorkingWithList(Polynom *P,int n);
+
 
 void main()
 {
@@ -41,18 +45,11 @@ void main()
 	inputF(P_read, 20);
 	WorkingWithTextPolynom();
 	WorkingWithDegreePolynom();
-	try
-	{
-		Polynom BB(-1, randCoef(3));
-		cout << "BB= " << BB << endl;
-	}
-	catch (const std::exception&ex)
-	{
-		Polynom BB;
-		cerr << ex.what() << endl;
-	}
+	WorkingWithException();
+	WorkingWithList(P_read,9);
 
-	
+
+
 
 
 	system("pause");
@@ -223,4 +220,41 @@ void WorkingWithDegreePolynom()
 	cout << "max degree = "<<Q.maxDegCoef() << endl;
 	cout << "min degree = "<<Q.minDegCoef() << endl;
 
+}
+void WorkingWithException()
+{
+	cout << "************** исключения***********" << endl;
+	cout << "************** Polynom (-1)***********" << endl;
+
+	try
+	{
+		Polynom BB(-1, randCoef(3));
+		cout << "BB= " << BB << endl;
+	}
+	catch (const std::exception&ex)
+	{
+		Polynom BB;
+		cerr << ex.what() << endl;
+	}
+}
+
+void WorkingWithList(Polynom *P, int n)
+{
+	cout << "************** Очередь***********" << endl;
+	List<Polynom> listPoly;
+	List<int> listDeg;
+	for (int i = 0; i < n; i++)
+	{
+		listPoly.Add(P[i]);
+		listDeg.Add(P[i].getDeg());
+	}
+	cout << "// очередь из Polynom //" << endl;
+
+	listPoly.ShowCol();
+	cout << "// очередь из int //" << endl;
+	listDeg.ShowLine();
+	listDeg.Add(-1);
+	listDeg.ShowLine();
+	listDeg.Del();
+	listDeg.ShowLine();
 }

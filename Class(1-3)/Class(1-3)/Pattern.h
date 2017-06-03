@@ -11,11 +11,3 @@ std::string toString(T val)
 	return oss.str();
 }
 
-template<typename T>
-T fromString(const std::string& s)
-{
-	std::istringstream iss(s);
-	T res;
-	iss >> res;
-	return res;
-}
